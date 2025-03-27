@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Visualizer</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Real-Time Process Visualizer</h2>
+
+    <label>Algorithm:</label>
+    <select id="algorithm" onchange="toggleInputs()">
+        <option value="FCFS">FCFS</option>
+        <option value="SJF">SJF</option>
+        <option value="RoundRobin">Round Robin</option>
+        <option value="Priority">Priority Scheduling</option>
+    </select>
+
+    <br><br>
+
+    <!-- Input fields for process details -->
+    <div>
+        <label>Arrival Time:</label> 
+        <input type="number" id="arrival">
+
+        <label>Burst Time:</label> 
+        <input type="number" id="burst">
+
+        <label id="priorityLabel" class="hidden">Priority:</label> 
+        <input type="number" id="priority" class="hidden">
+
+        <label id="quantumLabel" class="hidden">Quantum:</label> 
+        <input type="number" id="quantum" class="hidden">
+    </div>
+
+    <!-- Add Process button on a new line -->
+    <div>
+        <button onclick="addProcess()">Add Process</button>
+    </div>
+
+    <!-- Other buttons -->
+    <div>
+        <button onclick="runScheduler()">Visualize</button>
+        <button onclick="resetProcesses()">Reset</button>
+    </div>
+
+    <h3>Processes</h3>
+    <table id="processTable">
+        <tr>
+            <th>Process ID</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th>Completion Time</th>
+            <th>Turnaround Time</th>
+            <th>Waiting Time</th>
+        </tr>
+    </table>
+
+    <h3>Gantt Chart</h3>
+    <div id="gantt-chart" class="gantt-chart"></div>
+
+    <h3>Graph Visualization</h3>
+    <canvas id="chart"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
